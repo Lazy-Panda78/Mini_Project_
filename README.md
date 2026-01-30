@@ -1,3 +1,3 @@
 # Mini_Project_
-**FreshVision: AI-Based Food Quality Classifier**
+_**FreshVision: AI-Based Food Quality Classifier**_ -
 Unified Comprehensive Freshness Classification System for Diverse Food Categories

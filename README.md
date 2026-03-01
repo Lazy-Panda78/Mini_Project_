@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 
 # 🥦 Unified Food Freshness Classification System
@@ -245,3 +246,8 @@ Training details in `ml/notebooks/training.ipynb`
 <div align="center">
 Made for Machine Learning Mini Project · 3 Academic Credits
 </div>
+=======
+# Mini_Project_
+## _**FreshVision: AI-Based Food Quality Classifier**_ -
+Unified Comprehensive Freshness Classification System for Diverse Food Categories
+>>>>>>> 601763a664d023a2f4596efa3ba16279d004bce1

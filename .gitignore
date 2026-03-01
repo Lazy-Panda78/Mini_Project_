@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+*.egg-info/
+
+# ML models (large files — store in S3 instead)
+*.h5
+*.pt
+*.pkl
+ml/data/raw/
+ml/data/processed/
+
+# Node
+node_modules/
+frontend/build/
+frontend/.env.local
+
+# Docker
+.dockerenv
+
+# IDE
+.vscode/
+.idea/
+*.DS_Store
+
+# Logs
+*.log
+logs/

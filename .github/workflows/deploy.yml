@@ -1,0 +1,26 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install -r backend/requirements.txt
+      - run: pytest backend/tests/
+
+  build-and-push:
+    needs: test-backend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker build -f cloud/docker/Dockerfile.backend -t freshness-backend .
+      # TODO: add docker push to ECR / DockerHub
+      # TODO: add SSH deploy step to EC2

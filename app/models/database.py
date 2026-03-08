@@ -1,50 +1,56 @@
 """
-app/models/database.py — SQLite database setup using Flask's built-in sqlite3
+database.py — SQLite schema and helpers
+Author: Yash Upadhyay (ML Lead)
 """
 import sqlite3
-import click
-from flask import current_app, g
+import os
+from flask import g
+
+DATABASE = os.environ.get('DATABASE_URL', 'freshness.db')
 
 
 def get_db():
-    """Open a new database connection for the current request."""
-    if "db" not in g:
-        g.db = sqlite3.connect(
-            current_app.config["DATABASE"],
-            detect_types=sqlite3.PARSE_DECLTYPES,
-        )
+    if 'db' not in g:
+        g.db = sqlite3.connect(DATABASE, detect_types=sqlite3.PARSE_DECLTYPES)
         g.db.row_factory = sqlite3.Row
     return g.db
 
 
 def close_db(e=None):
-    db = g.pop("db", None)
+    db = g.pop('db', None)
     if db is not None:
         db.close()
 
 
 def init_db(app):
-    """Create tables and register teardown on the Flask app."""
     with app.app_context():
-        db = sqlite3.connect(app.config["DATABASE"])
-        db.execute("""
+        db = get_db()
+        db.executescript('''
+            CREATE TABLE IF NOT EXISTS users (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                username   TEXT    NOT NULL UNIQUE,
+                password   TEXT    NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+
             CREATE TABLE IF NOT EXISTS predictions (
-                id        INTEGER PRIMARY KEY AUTOINCREMENT,
-                filename  TEXT NOT NULL,
-                label     TEXT NOT NULL,
-                confidence REAL NOT NULL,
-                category  TEXT DEFAULT 'unknown',
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-        db.execute("""
+                id             INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id        INTEGER NOT NULL REFERENCES users(id),
+                filename       TEXT    NOT NULL,
+                original_name  TEXT,
+                label          TEXT    NOT NULL,
+                display_label  TEXT,
+                confidence     REAL    NOT NULL,
+                probabilities  TEXT,
+                created_at     DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+
             CREATE TABLE IF NOT EXISTS feedback (
                 id            INTEGER PRIMARY KEY AUTOINCREMENT,
-                prediction_id INTEGER REFERENCES predictions(id),
-                correct_label TEXT NOT NULL,
-                created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
+                prediction_id INTEGER NOT NULL REFERENCES predictions(id),
+                user_id       INTEGER NOT NULL REFERENCES users(id),
+                correct_label TEXT    NOT NULL,
+                created_at    DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+        ''')
         db.commit()
-        db.close()
-    app.teardown_appcontext(close_db)

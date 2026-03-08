@@ -4,56 +4,104 @@
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-lg-8">
-    <h2 class="mb-1" style="font-weight:800; letter-spacing:-0.02em;">About FreshVision</h2>
-    <p class="mb-4" style="color:var(--muted);">ML Mini Project · GLA University · B.Tech CSE (AI/ML) Sem 4 · 2025-26</p>
+    <div class="mb-4">
+      <p class="mono text-accent mb-1" style="font-size:0.78rem; letter-spacing:0.12em;">GLA UNIVERSITY · B.TECH CSE (AI/ML) · SEM 4 · 2025-26</p>
+      <h2 class="mb-1" style="font-weight:800; letter-spacing:-0.02em;">About FreshVision</h2>
+      <p style="color:var(--muted);">An end-to-end AI system for automated food freshness detection.</p>
+    </div>
 
+    <!-- Problem & Goal -->
     <div class="card p-4 mb-4">
-      <h5 style="font-weight:700; color:var(--accent);">Project Overview</h5>
-      <p style="color:var(--muted);">
-        FreshVision is a unified AI-based food freshness classification system that uses a two-stage
-        deep learning pipeline — YOLOv8 for food detection and EfficientNetB0 for freshness classification —
-        to assess whether food is Fresh, Semi-Fresh, or Rotten from a single uploaded image.
+      <h5 style="font-weight:700; color:var(--accent);">Why we built this</h5>
+      <p style="color:var(--muted); margin-bottom:0.75rem;">
+        Manual food freshness inspection is inconsistent and unscalable.
+        Consumers and supply chain operators lack an accessible, accurate tool
+        to assess food quality from a simple image.
+      </p>
+      <p style="color:var(--muted); margin:0;">
+        FreshVision solves this with a two-stage deep learning pipeline —
+        <strong style="color:var(--text);">YOLOv8</strong> for food detection
+        and <strong style="color:var(--text);">EfficientNetB0</strong> for classification —
+        achieving <strong style="color:var(--fresh);">92% accuracy</strong> on the test set.
       </p>
     </div>
 
+    <!-- Model Stats -->
+    <div class="row g-3 mb-4">
+      {% for label, val, color in [
+        ("Accuracy",   "92%",         "var(--fresh)"),
+        ("Precision",  "0.91",        "var(--accent)"),
+        ("Recall",     "0.90",        "var(--accent2)"),
+        ("F1 Score",   "0.91",        "var(--semi)"),
+        ("Latency",    "< 5s",        "var(--fresh)"),
+        ("Classes",    "3",           "var(--accent)"),
+      ] %}
+      <div class="col-4 col-md-2">
+        <div class="card p-3 text-center">
+          <div style="font-size:1.4rem; font-weight:800; color:{{ color }};">{{ val }}</div>
+          <div style="color:var(--muted); font-size:0.72rem; margin-top:2px;">{{ label }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Tech Stack -->
     <div class="card p-4 mb-4">
       <h5 style="font-weight:700; color:var(--accent);">Tech Stack</h5>
       <div class="row g-3 mt-1">
         {% for layer, tech in [
-          ("ML Model", "YOLOv8 + EfficientNetB0 · TensorFlow 2.13 · Transfer Learning"),
-          ("Backend",  "Python 3.10 · Flask 3.0 · Flask-Bcrypt · SQLite"),
-          ("Frontend", "Jinja2 · Bootstrap 5 · Custom Dark CSS · Vanilla JS"),
-          ("Cloud",    "Hugging Face Spaces (Gradio) · Render.com · Docker"),
-          ("CI/CD",    "GitHub Actions · pytest · docker-compose"),
+          ("ML Model",  "YOLOv8 · EfficientNetB0 · TensorFlow 2.13 · Transfer Learning"),
+          ("Backend",   "Python 3.10 · Flask 3.0 · Flask-Bcrypt · SQLite"),
+          ("Frontend",  "Jinja2 · Bootstrap 5 · Custom Dark CSS · Syne + DM Mono"),
+          ("Cloud",     "Hugging Face Spaces (Gradio) · Render.com · Docker"),
+          ("CI/CD",     "GitHub Actions · pytest · docker-compose"),
+          ("Dataset",   "Kaggle — Fruits Fresh & Rotten · Food-101"),
         ] %}
         <div class="col-md-6">
-          <div style="background:var(--surface2); border-radius:8px; padding:1rem;">
-            <div class="mono" style="font-size:0.7rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:4px;">{{ layer | upper }}</div>
-            <div style="font-size:0.85rem;">{{ tech }}</div>
+          <div style="background:var(--surface2); border-radius:8px; padding:0.9rem 1rem;">
+            <div class="mono" style="font-size:0.68rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:4px;">{{ layer | upper }}</div>
+            <div style="font-size:0.83rem;">{{ tech }}</div>
           </div>
         </div>
         {% endfor %}
       </div>
     </div>
 
-    <div class="card p-4">
-      <h5 style="font-weight:700; color:var(--accent);">Team</h5>
+    <!-- Team -->
+    <div class="card p-4 mb-4">
+      <h5 style="font-weight:700; color:var(--accent);">Team 130</h5>
       <div class="row g-3 mt-1">
-        {% for name, role in [
-          ("Yash Upadhyay",  "ML Lead — Model training, HF deployment, inference pipeline"),
-          ("Siddhi Singh",   "Full-Stack Lead — Flask auth, routes, history, dark UI"),
-          ("Sanya Singh",    "Frontend / QA — Styling, result page, testing, documentation"),
+        {% for name, role, detail in [
+          ("Yash Upadhyay",  "ML Lead",            "Model training, HF deployment, inference pipeline, database schema, CI/CD"),
+          ("Siddhi Singh",   "Full-Stack Lead",     "Flask auth, predict & history routes, dark theme UI, all templates"),
+          ("Sanya Singh",    "Frontend / QA",       "UI polish, result page, about page, testing, documentation, README"),
         ] %}
         <div class="col-md-4">
-          <div style="background:var(--surface2); border-radius:8px; padding:1rem; text-align:center;">
-            <div style="width:40px;height:40px;border-radius:50%;background:var(--accent);color:#0c0c0e;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 0.75rem;">
+          <div style="background:var(--surface2); border-radius:8px; padding:1.2rem; text-align:center;">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--accent);color:#0c0c0e;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 0.75rem;">
               {{ name[0] }}
             </div>
             <div style="font-weight:700; font-size:0.9rem;">{{ name }}</div>
-            <div style="color:var(--muted); font-size:0.78rem; margin-top:4px;">{{ role }}</div>
+            <div style="color:var(--accent); font-size:0.75rem; margin:4px 0; font-weight:600;">{{ role }}</div>
+            <div style="color:var(--muted); font-size:0.75rem;">{{ detail }}</div>
           </div>
         </div>
         {% endfor %}
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="card p-4">
+      <h5 style="font-weight:700; color:var(--accent);">Links</h5>
+      <div class="d-flex gap-3 flex-wrap mt-2">
+        <a href="https://github.com/Lazy-Panda78/Mini_Project_"
+           target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-github me-2"></i>GitHub Repo
+        </a>
+        <a href="https://huggingface.co/spaces/Lazypanda0103/Unified-Comprehensive-Freshness-Classification"
+           target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-box-arrow-up-right me-2"></i>HF Spaces Demo
+        </a>
       </div>
     </div>
 

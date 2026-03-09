@@ -30,7 +30,7 @@
 
 ## Overview
 
-FreshVision is a **unified AI-based food freshness classification system** that assesses the freshness of fruits, vegetables, and produce from a single uploaded image using a two-stage deep learning pipeline.
+FreshVision is a **unified ML-based food freshness classification system** that assesses the freshness of fruits, vegetables, and produce from a single uploaded image using a two-stage deep learning pipeline.
 
 **Freshness Classes:** `Fresh` · `Semi-Fresh` · `Rotten`
 

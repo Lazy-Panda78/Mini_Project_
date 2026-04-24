@@ -9,7 +9,7 @@
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Spaces-FFD21E?logo=huggingface)](https://huggingface.co/spaces/Lazypanda0103/Unified-Comprehensive-Freshness-Classification)
 
 **Live Demo (Gradio):** [huggingface.co/spaces/Lazypanda0103/Unified-Comprehensive-Freshness-Classification](https://huggingface.co/spaces/Lazypanda0103/Unified-Comprehensive-Freshness-Classification)  
-**Flask App:** Deployed on Render.com (see deployment section)  
+**Flask App:** https://freshness-classifier.onrender.com  
 **Course:** ML Mini Project · B.Tech CSE (AI/ML) Sem 4 ·
 
 ---

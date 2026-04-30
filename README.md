@@ -93,20 +93,20 @@ Mini_Project_/
 ├── Dockerfile
 │
 ├── app/
-│ ├── routes/
-│ │ ├── auth.py
-│ │ ├── predict.py
-│ │ └── history.py
-│ │
-│ ├── models/
-│ │ └── database.py
-│ │
-│ ├── utils/
-│ │ ├── inference.py
-│ │ └── preprocess.py
-│ │
-│ ├── templates/
-│ └── static/
+│   ├── routes/
+│   │   ├── auth.py
+│   │   ├── predict.py
+│   │   └── history.py
+│   │
+│   ├── models/
+│   │   └── database.py
+│   │
+│   ├── utils/
+│   │   ├── inference.py
+│   │   └── preprocess.py
+│   │
+│   ├── templates/
+│   └── static/
 │
 ├── tests/
 ├── model.py

@@ -12,42 +12,42 @@
 
 ## 🔗 Live Links
 
-- 🎯 **Hugging Face Demo:**  
+- 🎯 Hugging Face Demo  
   https://huggingface.co/spaces/Lazypanda0103/freshvision-app  
 
-- 🌐 **Flask Web App (Render):**  
+- 🌐 Flask Web App (Render)  
   https://freshness-classifier-qj3t.onrender.com/
 
 ---
 
 ## 📌 Overview
 
-FreshVision is an **AI-powered fruit freshness classification system** that predicts whether a fruit is **Fresh or Rotten** from an uploaded image using deep learning.
+FreshVision is an AI-powered fruit freshness classification system that predicts whether a fruit is Fresh or Rotten from an image using deep learning.
 
-The system is designed with a focus on:
-- **Real-world reliability**
-- **Clean deployment architecture**
-- **User-friendly interface**
+The system is designed for:
+- Real-world reliability  
+- Clean deployment  
+- User-friendly interaction  
 
 ---
 
 ## 🎯 Key Features
 
-- 🧠 ResNet18-based deep learning model (PyTorch)
-- 📷 Image upload with real-time prediction
+- 🧠 ResNet18 model (PyTorch)
+- 📷 Image-based prediction
 - 📊 Confidence score + top predictions
 - 🚨 Confidence-based rejection (Unknown detection)
-- 🔐 User authentication & history tracking
-- 🌐 Dual deployment (Hugging Face + Render)
+- 🔐 User authentication + history tracking
+- 🌐 Hugging Face + Render deployment
 - 🐳 Dockerized backend
-- ⚙️ CI/CD pipeline with GitHub Actions
+- ⚙️ CI/CD with GitHub Actions
 
 ---
 
 ## 🏗️ System Architecture
 
 
-User Input (Image + Optional Text)
+User Input (Image)
 │
 ▼
 Flask Web App (Render)
@@ -124,7 +124,7 @@ git clone https://github.com/Lazy-Panda78/Mini_Project_.git
 cd Mini_Project_
 2️⃣ Install & Run
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python run.py
 
@@ -143,13 +143,10 @@ Training	Transfer Learning
 Activation	Softmax
 Loss	Cross Entropy
 🚨 Confidence Handling
-
-To improve prediction reliability:
-
 if confidence < 0.75:
     return "Unknown"
 
-This prevents incorrect predictions on:
+Prevents incorrect predictions on:
 
 Non-fruit images
 Low-quality inputs
@@ -159,22 +156,19 @@ Component	Service	Status
 ML Model	HuggingFace Spaces	✅ Live
 Flask App	Render.com	✅ Live
 CI/CD	GitHub Actions	✅ Active
-📊 Demo
-
-Try:
-
-Upload a fruit → get prediction
-Upload random image → see rejection system
+🧪 Demo
+Upload fruit → prediction
+Upload random image → rejection
 👨‍💻 Team
 Name	Role
 Yash Upadhyay	ML & Deployment
 Siddhi Singh	Backend
 Sanya Singh	Frontend
 🧠 Key Learnings
-Deployment challenges in ML systems
-Importance of preprocessing consistency
-Handling out-of-distribution inputs
-CI/CD integration for ML pipelines
+ML deployment challenges
+Preprocessing consistency
+Handling unknown inputs
+CI/CD integration
 ⭐ Conclusion
 
 FreshVision demonstrates a production-ready AI system combining:
@@ -184,26 +178,3 @@ Full-stack development
 Cloud deployment
 
 GLA University · ML Mini Project · 2025–26
-
-
----
-
-# 🔥 Why this is now “10/10”
-
-- ✅ Clean sections (no clutter like your screenshot issue)
-- ✅ Proper spacing + formatting
-- ✅ Correct tech (PyTorch, not TensorFlow)
-- ✅ Strong keywords for viva
-- ✅ Matches your actual deployed system
-- ✅ Professional GitHub-level presentation
-
----
-
-# 🚀 If you want next (optional upgrades)
-
-I can:
-- Add **GIF demo preview (very high impact)**
-- Add **architecture diagram image**
-- Add **badges for CI/CD + deploy status**
-
-Just say 👍

@@ -234,6 +234,6 @@ This guards against:
 
 **GLA University · ML Mini Project · 2025–26**
 
-Made with ❤️ by Team FreshVision
+Team 130
 
 </div>
